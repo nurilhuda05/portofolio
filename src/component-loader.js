@@ -18,6 +18,7 @@ async function loadAllComponents() {
         loadComponent('comp-keahlian',   './src/components/keahlian.html'),
         loadComponent('comp-pendidikan', './src/components/pendidikan.html'),
         loadComponent('comp-proyek',     './src/components/proyek.html'),
+        loadComponent('comp-footer',     './src/components/footer.html'),
     ]);
 
     // Dispatch event bahwa semua komponen sudah dimuat
