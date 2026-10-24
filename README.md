@@ -1,16 +1,30 @@
-Cara Menjalankan di Lokal:
+# Portfolio Muhammad Nuril Huda
 
-Menggunakan Extension
-1. Buka Tab Extension di VS Code (tekan Ctrl+Shift+X)
-2. Cari "Live Server" oleh Ritwick Dey
-3. Klik Install
-4. Klik kanan pada index.html → Open with Live Server
+## Menjalankan secara lokal
 
-Menggunakan Command Prompt
-1. Buka Terminal VS Code 
-2. Masuk ke direktori portofolio:
-cd D:\PortofolioNuril
-3. Jalankan server:
-npx serve .
-4. Jika muncul link, Salin link tersebut kemudian jalankan di browser 
-5. untuk menghentikan server, tekan Ctrl+C di Terminal
+1. Pastikan Node.js dan npm sudah terpasang.
+2. Dari folder proyek, pasang dependency:
+
+   ```sh
+   npm install
+   ```
+
+3. Bangun CSS Tailwind:
+
+   ```sh
+   npm run build
+   ```
+
+4. Jalankan server statis:
+
+   ```sh
+   npx serve .
+   ```
+
+5. Buka URL lokal yang ditampilkan oleh `serve`. Hentikan server dengan `Ctrl+C`.
+
+Jangan membuka `index.html` langsung melalui `file://`, karena browser perlu mengambil komponen HTML menggunakan `fetch()`. Untuk preview, gunakan server statis; Live Server pernah menyisipkan skrip ke dalam SVG inline pada proyek ini.
+
+## Deployment
+
+Bangun CSS dengan `npm run build`, lalu unggah seluruh folder proyek kecuali `node_modules/` dan `.git/`. Pertahankan susunan `index.html`, `src/`, dan `assets/`, karena halaman memuat komponen serta aset menggunakan path relatif.

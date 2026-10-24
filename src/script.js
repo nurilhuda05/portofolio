@@ -9,7 +9,10 @@ document.addEventListener('components-loaded', () => {
 
     // Alihkan (toggle) menu seluler
     burger.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
+        const isExpanded = burger.getAttribute("aria-expanded") === "true";
+        mobileMenu.classList.toggle("hidden", isExpanded);
+        burger.setAttribute("aria-expanded", String(!isExpanded));
+        burger.setAttribute("aria-label", isExpanded ? "Buka menu navigasi" : "Tutup menu navigasi");
     });
 
     // Tutup menu saat salah satu link diklik (diberi delay agar animasi garis bawah terlihat dahulu)
@@ -17,6 +20,8 @@ document.addEventListener('components-loaded', () => {
         link.addEventListener('click', () => {
             setTimeout(() => {
                 mobileMenu.classList.add('hidden');
+                burger.setAttribute("aria-expanded", "false");
+                burger.setAttribute("aria-label", "Buka menu navigasi");
             }, 200);
         });
     });

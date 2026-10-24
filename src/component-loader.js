@@ -1,13 +1,12 @@
 
 async function loadComponent(elementId, filePath) {
-    try {
-        const response = await fetch(filePath);
-        if (!response.ok) throw new Error(`Gagal memuat ${filePath}: ${response.status}`);
-        const html = await response.text();
-        document.getElementById(elementId).innerHTML = html;
-    } catch (error) {
-        console.error(error);
-    }
+    const container = document.getElementById(elementId);
+    if (!container) throw new Error(`Wadah komponen tidak ditemukan: ${elementId}`);
+
+    const response = await fetch(filePath);
+    if (!response.ok) throw new Error(`Gagal memuat ${filePath}: ${response.status}`);
+
+    container.innerHTML = await response.text();
 }
 
 async function loadAllComponents() {
@@ -26,4 +25,12 @@ async function loadAllComponents() {
 }
 
 // Muat semua komponen saat DOM siap
-loadAllComponents();
+loadAllComponents().catch(error => {
+    console.error(error);
+
+    const errorMessage = document.createElement('p');
+    errorMessage.setAttribute('role', 'alert');
+    errorMessage.className = 'font-poppins bg-bg1 text-text p-4';
+    errorMessage.textContent = 'Konten halaman gagal dimuat. Silakan muat ulang halaman.';
+    document.body.prepend(errorMessage);
+});
