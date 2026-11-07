@@ -2,7 +2,7 @@
     <header class="noise-surface fixed top-0 w-full z-50 bg-bg text-bg1 transition-all duration-300">
         <nav class="max-w-7xl mx-auto flex flex-wrap justify-between items-center py-5 px-6">
 
-            <a href="#beranda" class="block">
+            <a href="#beranda" class="block header-logo">
                 <img src="./assets/img/logo.webp" alt="Logo"
                     class="h-10 w-auto object-contain transition-all duration-300">
             </a>
@@ -27,6 +27,19 @@
                 </li>
 
             </ul>
+            <button id="theme-toggle" type="button" aria-label="Aktifkan mode gelap" aria-pressed="false"
+                class="theme-toggle text-inherit transition-colors duration-300"
+                title="Aktifkan mode gelap">
+                <svg class="theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+                </svg>
+                <svg class="theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"></path>
+                </svg>
+            </button>
             <!-- Burger -->
             <button id="burger" type="button" aria-controls="mobile-menu" aria-expanded="false"
                 aria-label="Buka menu navigasi"
