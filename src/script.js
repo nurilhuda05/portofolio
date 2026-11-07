@@ -6,6 +6,77 @@ document.addEventListener('components-loaded', () => {
     const logo = header.querySelector("img");
     const desktopMenu = header.querySelector("ul");
     const sections = document.querySelectorAll("section");
+    const skillsSection = document.getElementById("keahlian");
+    const skillIcons = skillsSection.querySelectorAll("svg[data-skill]");
+    const skillPopover = document.createElement("div");
+    let activeSkillIcon = null;
+
+    skillPopover.className = "skill-popover";
+    skillPopover.setAttribute("role", "status");
+    skillPopover.setAttribute("aria-live", "polite");
+    skillsSection.append(skillPopover);
+
+    function closeSkillPopover() {
+        if (activeSkillIcon) {
+            activeSkillIcon.setAttribute("aria-expanded", "false");
+            activeSkillIcon = null;
+        }
+
+        skillPopover.classList.remove("is-visible");
+    }
+
+    function toggleSkillPopover(icon) {
+        if (activeSkillIcon === icon) {
+            closeSkillPopover();
+            return;
+        }
+
+        if (activeSkillIcon) {
+            activeSkillIcon.setAttribute("aria-expanded", "false");
+        }
+
+        activeSkillIcon = icon;
+        activeSkillIcon.setAttribute("aria-expanded", "true");
+        skillPopover.textContent = icon.dataset.skill;
+        skillPopover.classList.remove("is-visible");
+
+        const iconBounds = icon.getBoundingClientRect();
+        const popoverBounds = skillPopover.getBoundingClientRect();
+        const horizontalPadding = 8;
+        const left = Math.min(
+            Math.max(iconBounds.left + iconBounds.width / 2 - popoverBounds.width / 2, horizontalPadding),
+            window.innerWidth - popoverBounds.width - horizontalPadding
+        );
+        const top = iconBounds.bottom + popoverBounds.height + 8 <= window.innerHeight
+            ? iconBounds.bottom + 8
+            : Math.max(horizontalPadding, iconBounds.top - popoverBounds.height - 8);
+
+        skillPopover.style.left = `${left}px`;
+        skillPopover.style.top = `${top}px`;
+        skillPopover.getBoundingClientRect();
+        skillPopover.classList.add("is-visible");
+    }
+
+    skillIcons.forEach(icon => {
+        icon.addEventListener("click", event => {
+            event.stopPropagation();
+            toggleSkillPopover(icon);
+        });
+
+        icon.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                toggleSkillPopover(icon);
+            }
+        });
+    });
+
+    document.addEventListener("click", closeSkillPopover);
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") closeSkillPopover();
+    });
+    window.addEventListener("resize", closeSkillPopover);
+    window.addEventListener("scroll", closeSkillPopover, { passive: true });
 
     // Alihkan (toggle) menu seluler
     burger.addEventListener("click", () => {

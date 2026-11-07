@@ -306,6 +306,9 @@
   .cursor-pointer {
     cursor: pointer;
   }
+  .resize {
+    resize: both;
+  }
   .scroll-mt-20 {
     scroll-margin-top: calc(var(--spacing) * 20);
   }
@@ -804,6 +807,44 @@
     opacity: 0.42;
     mix-blend-mode: multiply;
   }
+  #keahlian svg[data-skill] {
+    color: var(--color-bg1);
+    cursor: pointer;
+    transition: transform 160ms ease, opacity 160ms ease;
+  }
+  #keahlian svg[data-skill]:hover, #keahlian svg[data-skill]:focus-visible, #keahlian svg[data-skill][aria-expanded="true"] {
+    color: #ffaf87;
+    opacity: 0.8;
+    transform: translateY(-2px);
+  }
+  #keahlian svg[data-skill]:focus-visible {
+    outline: 2px solid #ffaf87;
+    outline-offset: 4px;
+  }
+  #keahlian svg[data-skill]:focus:not(:focus-visible) {
+    outline: none;
+  }
+  .noise-surface .skill-popover {
+    position: fixed;
+    z-index: 60;
+    background: transparent;
+    color: #ffaf87;
+    font-family: var(--font-poppins);
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.25;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    visibility: hidden;
+    transition: opacity 160ms ease, transform 160ms ease;
+  }
+  .skill-popover.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
   .noise-surface > * {
     position: relative;
     z-index: 1;
@@ -905,6 +946,11 @@
   .hero-download a {
     padding: 0.375rem 0.875rem;
     font-size: 0.75rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #keahlian svg[data-skill], .skill-popover {
+    transition: none;
   }
 }
 @property --tw-border-style {
