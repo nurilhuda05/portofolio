@@ -478,6 +478,9 @@
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
   }
+  .text-\[\#ffaf87\] {
+    color: #ffaf87;
+  }
   .text-bg {
     color: var(--color-bg);
   }
