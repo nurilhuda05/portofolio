@@ -71,6 +71,49 @@ document.addEventListener('components-loaded', () => {
         });
     });
 
+    const gpaBadge = document.querySelector(".gpa-badge");
+    const gpaCounter = gpaBadge?.querySelector(".gpa-counter");
+    const gpaCard = gpaBadge?.closest(".education-card");
+
+    if (gpaBadge && gpaCounter && gpaCard) {
+        const target = 3.84;
+        const duration = 1000;
+        let animationFrame = null;
+
+        function animateGpaCounter(timestamp, startTime) {
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const easedProgress = 1 - (1 - progress) ** 3;
+
+            gpaCounter.textContent = (target * easedProgress).toFixed(2);
+
+            if (progress < 1) {
+                animationFrame = requestAnimationFrame(nextTimestamp => {
+                    animateGpaCounter(nextTimestamp, startTime);
+                });
+            } else {
+                animationFrame = null;
+            }
+        }
+
+        function startGpaCounter() {
+            if (animationFrame !== null) return;
+
+            gpaCounter.textContent = "0.00";
+            animationFrame = requestAnimationFrame(timestamp => {
+                animateGpaCounter(timestamp, timestamp);
+            });
+        }
+
+        gpaCard.addEventListener("mouseenter", startGpaCounter);
+        gpaBadge.addEventListener("click", startGpaCounter);
+        gpaBadge.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                startGpaCounter();
+            }
+        });
+    }
+
     document.addEventListener("click", closeSkillPopover);
     document.addEventListener("keydown", event => {
         if (event.key === "Escape") closeSkillPopover();

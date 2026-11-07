@@ -48,7 +48,13 @@
         border-radius: 9999px;
         background-color: rgb(34 139 230 / 10%);
         color: var(--color-text);
+        cursor: pointer;
         font-weight: 600;
+    }
+
+    .gpa-badge:focus-visible {
+        outline: 2px solid var(--color-bg);
+        outline-offset: 3px;
     }
 
     .education-card {
