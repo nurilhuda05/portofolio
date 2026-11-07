@@ -1,6 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Allura&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
+@property --color-bg {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #228BE6;
+}
+
+@property --color-bg1 {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: oklch(93% 0.007 106.5);
+}
+
+@property --color-text {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: oklch(27.9% 0.041 260.031);
+}
+
+@property --color-text1 {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: oklch(55.4% 0.046 257.417);
+}
+
+@property --color-text2 {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: oklch(75% 0.183 55.934);
+}
+
+html {
+    transition: --color-bg 300ms ease, --color-bg1 300ms ease,
+        --color-text 300ms ease, --color-text1 300ms ease,
+        --color-text2 300ms ease;
+}
+
 @theme {
     --color-bg: #228BE6;
     --color-bg1: oklch(93% 0.007 106.5);
@@ -11,6 +47,15 @@
     --font-playfair: "Playfair Display", serif;
     --font-poppins: "Poppins", sans-serif;
     --font-breating: "Breating", "Allura", cursive;
+}
+
+html.dark {
+    color-scheme: dark;
+    --color-bg: #222831;
+    --color-bg1: #393E46;
+    --color-text: #DFD0B8;
+    --color-text1: #948979;
+    --color-text2: #948979;
 }
 
 @utility logo-blue {
@@ -202,6 +247,157 @@
         color: #fff;
     }
 
+    html.dark .text-bg,
+    html.dark .text-bg1,
+    html.dark .text-text {
+        color: var(--color-text);
+    }
+
+    html.dark .text-text1,
+    html.dark .text-text2,
+    html.dark [class~="text-[#ffaf87]"] {
+        color: var(--color-text1);
+    }
+
+    html.dark .border-bg,
+    html.dark .border-bg1,
+    html.dark .border-text1 {
+        border-color: var(--color-text1);
+    }
+
+    html.dark header ul.border-bg,
+    html.dark header ul.border-bg1 {
+        border-color: var(--color-text);
+    }
+
+    html.dark .header-logo {
+        position: relative;
+    }
+
+    html.dark .header-logo img {
+        opacity: 0;
+    }
+
+    html.dark .header-logo::after {
+        position: absolute;
+        inset: 0;
+        background-color: var(--color-text);
+        content: "";
+        -webkit-mask: url("../assets/img/logo.webp") center / contain no-repeat;
+        mask: url("../assets/img/logo.webp") center / contain no-repeat;
+        transition: background-color 300ms ease;
+    }
+
+    html.dark .hero-meta {
+        color: var(--color-text1);
+    }
+
+    html.dark .hero-wordmark {
+        color: var(--color-text);
+    }
+
+    html.dark .hero-wordmark-outline {
+        -webkit-text-stroke-color: var(--color-text);
+    }
+
+    html.dark .hero-name,
+    html.dark #keahlian svg[data-skill]:hover,
+    html.dark #keahlian svg[data-skill]:focus-visible,
+    html.dark #keahlian svg[data-skill][aria-expanded="true"],
+    html.dark .noise-surface .skill-popover {
+        color: var(--color-text1);
+    }
+
+    html.dark #keahlian svg[data-skill] {
+        color: var(--color-text);
+    }
+
+    html.dark #keahlian svg[data-skill]:focus-visible,
+    html.dark .gpa-badge:focus-visible {
+        outline-color: var(--color-text);
+    }
+
+    html.dark .education-card:hover,
+    html.dark .education-card:hover * {
+        color: var(--color-text);
+    }
+
+    html.dark .education-card:hover {
+        border-color: color-mix(in srgb, var(--color-text1) 65%, transparent);
+    }
+
+    html.dark .education-card:hover .gpa-badge {
+        border-color: color-mix(in srgb, var(--color-text) 65%, transparent);
+        background-color: color-mix(in srgb, var(--color-text) 12%, transparent);
+    }
+
+    html.dark .gpa-badge {
+        border-color: color-mix(in srgb, var(--color-text1) 65%, transparent);
+        background-color: color-mix(in srgb, var(--color-text1) 12%, transparent);
+    }
+
+    html.dark #proyek .bg-bg1 {
+        background-color: var(--color-text1);
+    }
+
+    html.dark #proyek img {
+        --tw-shadow-color: rgb(0 0 0 / 70%);
+    }
+
+    html.dark .footer-play-toggle:hover,
+    html.dark .footer-track-toggle:hover,
+    html.dark .footer-back-to-top:hover,
+    html.dark .footer-links a:hover,
+    html.dark .footer-links a:focus-visible {
+        color: var(--color-text1);
+    }
+
+    .theme-toggle {
+        display: inline-flex;
+        width: 2.5rem;
+        height: 2.5rem;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border: 1px solid currentColor;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .theme-toggle:hover {
+        opacity: 0.75;
+        transform: translateY(-3px);
+    }
+
+    .theme-toggle:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 3px;
+    }
+
+    .theme-toggle svg {
+        width: 1.15rem;
+        height: 1.15rem;
+    }
+
+    .theme-icon-moon,
+    html.dark .theme-icon-sun {
+        display: none;
+    }
+
+    html.dark .theme-icon-moon {
+        display: block;
+    }
+
+    #theme-toggle {
+        transition: color 300ms ease, background-color 300ms ease,
+            border-color 300ms ease, transform 180ms ease, opacity 180ms ease;
+    }
+
+    header {
+        transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease;
+    }
+
     #keahlian svg[data-skill] {
         color: var(--color-bg1);
         cursor: pointer;
@@ -389,5 +585,11 @@
     .footer-links a,
     .footer-lyrics {
         transition: none;
+    }
+
+    #theme-toggle,
+    #theme-toggle:hover {
+        transition: none;
+        transform: none;
     }
 }

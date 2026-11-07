@@ -1,3 +1,38 @@
+class ThemeController {
+    constructor() {
+        this.toggle = document.getElementById("theme-toggle");
+    }
+
+    initialize() {
+        if (!this.toggle) throw new Error("Tombol pergantian tema tidak ditemukan.");
+
+        this.toggle.addEventListener("click", () => this.toggleTheme());
+        this.updateToggleState();
+    }
+
+    toggleTheme() {
+        const isDarkMode = document.documentElement.classList.toggle("dark");
+        this.updateToggleState();
+
+        try {
+            localStorage.setItem("portfolio-theme", isDarkMode ? "dark" : "light");
+        } catch (error) {
+            console.error("Preferensi tema gagal disimpan:", error);
+        }
+    }
+
+    updateToggleState() {
+        const isDarkMode = document.documentElement.classList.contains("dark");
+        const label = isDarkMode ? "Aktifkan mode terang" : "Aktifkan mode gelap";
+        this.toggle.setAttribute("aria-label", label);
+        this.toggle.setAttribute("aria-pressed", String(isDarkMode));
+        this.toggle.title = label;
+
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor) themeColor.content = isDarkMode ? "#222831" : "#228BE6";
+    }
+}
+
 class NavigationController {
     constructor() {
         this.burger = document.getElementById("burger");
@@ -53,7 +88,7 @@ class NavigationController {
 
         if (!activeSection) return;
 
-        if (activeSection.classList.contains("bg-bg1")) {
+        if (activeSection.closest(".bg-bg1")) {
             this.header.classList.remove("bg-bg", "text-bg1");
             this.header.classList.add("bg-bg1", "text-bg");
             this.desktopMenu.classList.remove("border-bg1");
@@ -365,6 +400,7 @@ document.addEventListener('components-loaded', () => {
         { time: 203.06, text: "Outro..." }
     ];
 
+    new ThemeController().initialize();
     new NavigationController().initialize();
     new SkillPopoverController().initialize();
     new GpaCounterController().initialize();

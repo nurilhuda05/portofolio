@@ -7,6 +7,16 @@
     <meta name="description"
         content="Portfolio Muhammad Nuril Huda, mahasiswa D4 Teknik Informatika Politeknik Negeri Malang.">
     <meta name="theme-color" content="#228BE6">
+    <script>
+        try {
+            document.documentElement.classList.toggle(
+                "dark",
+                localStorage.getItem("portfolio-theme") === "dark"
+            );
+        } catch (error) {
+            console.error("Preferensi tema gagal dibaca:", error);
+        }
+    </script>
     <link href="./src/output.css" rel="stylesheet">
     <link rel="icon" href="./assets/img/logo.webp" type="image/webp">
     <title>Portofolio Muhammad Nuril Huda</title>
