@@ -967,9 +967,6 @@ html.dark {
   html.dark .border-bg, html.dark .border-bg1, html.dark .border-text1 {
     border-color: var(--color-text1);
   }
-  html.dark header ul {
-    border-color: var(--color-text);
-  }
   html.dark header ul.border-bg, html.dark header ul.border-bg1 {
     border-color: var(--color-text);
   }
