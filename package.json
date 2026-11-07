@@ -13,5 +13,10 @@
   "dependencies": {
     "@tailwindcss/cli": "^4.3.2",
     "tailwindcss": "^4.3.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^26.6.6",
+    "serve": "^14.2.7"
   }
 }
