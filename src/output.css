@@ -1051,9 +1051,11 @@ html.dark {
     border: 1px solid currentColor;
     border-radius: 9999px;
     cursor: pointer;
+    transition: transform 180ms ease, opacity 180ms ease;
   }
   .theme-toggle:hover {
     opacity: 0.75;
+    transform: translateY(-3px);
   }
   .theme-toggle:focus-visible {
     outline: 2px solid currentColor;
@@ -1069,7 +1071,10 @@ html.dark {
   html.dark .theme-icon-moon {
     display: block;
   }
-  #theme-toggle, header {
+  #theme-toggle {
+    transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease, transform 180ms ease, opacity 180ms ease;
+  }
+  header {
     transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease;
   }
   #keahlian svg[data-skill] {
@@ -1228,6 +1233,10 @@ html.dark {
 @media (prefers-reduced-motion: reduce) {
   #keahlian svg[data-skill], .skill-popover, .footer-play-toggle, .footer-track-toggle, .footer-back-to-top, .footer-links a, .footer-lyrics {
     transition: none;
+  }
+  #theme-toggle, #theme-toggle:hover {
+    transition: none;
+    transform: none;
   }
 }
 @property --tw-border-style {
