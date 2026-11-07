@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Allura&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -10,6 +10,7 @@
 
     --font-playfair: "Playfair Display", serif;
     --font-poppins: "Poppins", sans-serif;
+    --font-breating: "Breating", "Allura", cursive;
 }
 
 @utility logo-blue {
@@ -48,8 +49,8 @@
         position: relative;
         isolation: isolate;
         container-type: inline-size;
-        height: 100svh;
-        min-height: 38rem;
+        height: 100vh;
+        min-height: 100vh;
     }
 
     .hero-meta {
@@ -66,12 +67,22 @@
         letter-spacing: 0.04em;
     }
 
-    .hero-wordmark {
+    .hero-title-group {
+        --hero-wordmark-line-height: clamp(2rem, 12.8cqw, 9.6rem);
+        --hero-name-half-line-height: clamp(0.8rem, 5.35cqw, 4.025rem);
         position: absolute;
+        top: 50%;
+        left: 50%;
         z-index: 1;
-        top: 43%;
-        left: 1.5rem;
-        right: 1.5rem;
+        width: calc(100% - 3rem);
+        height: calc(var(--hero-wordmark-line-height) + var(--hero-name-half-line-height));
+        transform: translate(-50%, -50%);
+    }
+
+    .hero-wordmark {
+        position: relative;
+        z-index: 1;
+        display: block;
         text-align: center;
         color: var(--color-bg1);
         font-family: var(--font-playfair);
@@ -94,63 +105,40 @@
         margin-right: 0.075em;
     }
 
-    .hero-portrait {
+    .hero-name {
         position: absolute;
         z-index: 2;
-        right: 51.5%;
-        bottom: 0;
-        display: block;
-        width: auto;
-        max-width: none;
-        height: 110vh;
-        object-fit: contain;
+        top: calc(100% - var(--hero-name-half-line-height));
+        left: 0;
+        width: 100%;
+        color: #ffaf87;
+        font-family: var(--font-breating);
+        font-size: clamp(1.6rem, 10.7cqw, 8.05rem);
+        font-weight: 400;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        transform: translateY(-50%);
     }
 
     .hero-download {
         position: absolute;
         z-index: 3;
-        right: 1.5rem;
-        bottom: 7%;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
 @media (max-width: 1279px) {
-    .hero-canvas {
-        min-height: 42rem;
-    }
-
     .hero-meta {
         top: 6rem;
         gap: 0.75rem;
         font-size: clamp(0.55rem, 1.8vw, 0.7rem);
     }
 
-    .hero-wordmark {
-        top: 39%;
-    }
-
-    .hero-wordmark {
-        z-index: 3;
-    }
-
     .hero-wordmark-outline {
         -webkit-text-stroke-width: 1px;
-    }
-
-    .hero-portrait {
-        right: auto;
-        left: 50%;
-        bottom: 0;
-        height: min(68svh, 42rem);
-        transform: translateX(-43.5%);
-    }
-
-    .hero-download {
-        top: calc(39% + clamp(2rem, 12.8cqw, 9.6rem) + 2rem);
-        left: 50%;
-        right: auto;
-        bottom: auto;
-        transform: translateX(-50%);
     }
 }
 
@@ -166,17 +154,5 @@
     .hero-download a {
         padding: 0.375rem 0.875rem;
         font-size: 0.75rem;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1279px) {
-    .hero-portrait {
-        height: min(80svh, 48rem);
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1279px) and (max-height: 768px) {
-    .hero-portrait {
-        height: 68svh;
     }
 }
