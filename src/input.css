@@ -40,6 +40,52 @@
         mix-blend-mode: multiply;
     }
 
+    .gpa-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 12px;
+        border: 1px solid rgb(34 139 230 / 35%);
+        border-radius: 9999px;
+        background-color: rgb(34 139 230 / 10%);
+        color: var(--color-text);
+        font-weight: 600;
+    }
+
+    .education-card {
+        min-width: 0;
+        padding: 1.5rem;
+        border: 1px solid transparent;
+        border-radius: 16px;
+        background: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .education-card:hover {
+        transform: translateY(-4px);
+        border-color: rgb(255 255 255 / 45%);
+        background-color: var(--color-bg);
+    }
+
+    .education-card:hover .gpa-badge {
+        border-color: rgb(255 255 255 / 55%);
+        background-color: rgb(255 255 255 / 12%);
+    }
+
+    .education-meta {
+        min-height: 8rem;
+    }
+
+    .education-description {
+        margin-top: 1.5rem;
+    }
+}
+
+@layer utilities {
+    .education-card:hover,
+    .education-card:hover * {
+        color: #fff;
+    }
+
     #keahlian svg[data-skill] {
         color: var(--color-bg1);
         cursor: pointer;
