@@ -367,10 +367,6 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-  .border-b {
-    border-bottom-style: var(--tw-border-style);
-    border-bottom-width: 1px;
-  }
   .border-bg {
     border-color: var(--color-bg);
   }
@@ -379,9 +375,6 @@
   }
   .border-text1 {
     border-color: var(--color-text1);
-  }
-  .border-transparent {
-    border-color: transparent;
   }
   .bg-bg {
     background-color: var(--color-bg);
