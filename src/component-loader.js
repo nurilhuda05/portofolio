@@ -16,7 +16,7 @@ async function loadAllComponents() {
         loadComponent('comp-tentang',    './src/components/tentang.html'),
         loadComponent('comp-keahlian',   './src/components/keahlian.html'),
         loadComponent('comp-pendidikan', './src/components/pendidikan.html'),
-        loadComponent('comp-proyek',     './src/components/proyek.html'),
+        loadComponent('comp-pengalaman', './src/components/proyek.html'),
         loadComponent('comp-footer',     './src/components/footer.html'),
     ]);
 

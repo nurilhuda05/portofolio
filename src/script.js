@@ -233,6 +233,44 @@ class GpaCounterController {
     }
 }
 
+class ExperienceTabsController {
+    constructor() {
+        this.section = document.getElementById("pengalaman");
+        this.tabs = this.section.querySelectorAll("[data-experience-tab]");
+        this.panels = this.section.querySelectorAll("[data-experience-panel]");
+    }
+
+    initialize() {
+        this.tabs.forEach((tab, index) => {
+            tab.addEventListener("click", () => this.activate(tab));
+            tab.addEventListener("keydown", event => {
+                if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+                event.preventDefault();
+                const direction = event.key === "ArrowRight" ? 1 : -1;
+                const nextTab = this.tabs[(index + direction + this.tabs.length) % this.tabs.length];
+                nextTab.focus();
+                this.activate(nextTab);
+            });
+        });
+    }
+
+    activate(activeTab) {
+        const activePanelId = activeTab.getAttribute("aria-controls");
+
+        this.tabs.forEach(tab => {
+            const isActive = tab === activeTab;
+            tab.setAttribute("aria-selected", String(isActive));
+            tab.tabIndex = isActive ? 0 : -1;
+        });
+
+        this.panels.forEach(panel => {
+            const isActive = panel.id === activePanelId;
+            panel.hidden = !isActive;
+            panel.classList.toggle("is-active", isActive);
+        });
+    }
+}
+
 class FooterMusicPlayer {
     constructor(lyricsData) {
         this.audio = document.getElementById("footer-audio");
@@ -404,5 +442,6 @@ document.addEventListener('components-loaded', () => {
     new NavigationController().initialize();
     new SkillPopoverController().initialize();
     new GpaCounterController().initialize();
+    new ExperienceTabsController().initialize();
     new FooterMusicPlayer(lyricsData).initialize();
 });

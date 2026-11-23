@@ -1,13 +1,34 @@
-<!-- Proyek Start -->
-<section id="proyek" class="noise-surface bg-bg w-full py-20 min-h-screen flex items-center scroll-mt-20">
+<!-- Pengalaman Start -->
+<section id="pengalaman" class="noise-surface bg-bg w-full py-20 min-h-screen flex items-center scroll-mt-20">
     <div class="max-w-7xl mx-auto px-6 w-full">
         <div class="text-center">
             <h2 class="font-playfair text-bg1 text-xl md:text-2xl lg:text-4xl leading-tight font-bold">
-                Proyek
+                Pengalaman
             </h2>
         </div>
+        <div class="mt-8 flex justify-center">
+            <div class="inline-flex rounded-full border border-bg1 p-1" role="tablist"
+                aria-label="Kategori pengalaman">
+                <button id="pengalaman-tab-akademik" type="button" role="tab" aria-selected="true"
+                    aria-controls="pengalaman-panel-akademik" tabindex="0" data-experience-tab="akademik"
+                    class="rounded-full border border-transparent px-5 py-2 font-poppins text-sm font-medium">
+                    Akademik
+                </button>
+                <button id="pengalaman-tab-nonakademik" type="button" role="tab" aria-selected="false"
+                    aria-controls="pengalaman-panel-nonakademik" tabindex="-1" data-experience-tab="nonakademik"
+                    class="rounded-full border border-transparent px-5 py-2 font-poppins text-sm font-medium">
+                    Nonakademik
+                </button>
+            </div>
+        </div>
+
+        <div id="pengalaman-panel-akademik" role="tabpanel" aria-labelledby="pengalaman-tab-akademik"
+            tabindex="0" data-experience-panel="akademik" class="experience-panel is-active mt-10">
+            <h3 class="mb-8 border-b border-bg1/50 pb-3 text-center font-playfair text-bg1 text-lg font-bold lg:text-xl">
+                Proyek
+            </h3>
         <!-- Proyek 1 -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <!-- Deskripsi -->
             <div class="text-center lg:text-right order-2 lg:order-1">
 
@@ -38,7 +59,7 @@
         </div>
 
         <!-- Garis -->
-        <div class="w-full h-[2px] bg-bg1 my-10"></div>
+        <div class="project-divider my-10 h-px w-full bg-bg1/50"></div>
 
         <!-- Proyek 2 -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
@@ -74,7 +95,7 @@
         </div>
 
         <!-- Garis -->
-        <div class="w-full h-[2px] bg-bg1 my-10"></div>
+        <div class="project-divider my-10 h-px w-full bg-bg1/50"></div>
 
         <!-- Proyek 3 -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
@@ -108,7 +129,7 @@
         </div>
 
         <!-- Garis -->
-        <div class="w-full h-[2px] bg-bg1 my-10"></div>
+        <div class="project-divider my-10 h-px w-full bg-bg1/50"></div>
 
         <!-- Proyek 4 -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10 items-start">
@@ -143,7 +164,82 @@
 
         </div>
 
+            <!-- Prestasi akademik dapat ditambahkan di sini dengan pola subjudul yang sama.
+            <section aria-labelledby="prestasi-akademik-title" class="mt-12">
+                <h3 id="prestasi-akademik-title"
+                    class="mb-8 border-b border-bg1/50 pb-3 font-playfair text-bg1 text-lg font-bold lg:text-xl">
+                    Prestasi
+                </h3>
+            </section>
+            -->
+        </div>
 
+        <div id="pengalaman-panel-nonakademik" role="tabpanel"
+            aria-labelledby="pengalaman-tab-nonakademik" tabindex="0"
+            data-experience-panel="nonakademik" class="experience-panel mt-10" hidden>
+            <section aria-labelledby="prestasi-kejuaraan-title">
+                <h3 id="prestasi-kejuaraan-title"
+                    class="mb-4 border-b border-bg1/50 pb-3 text-center font-playfair text-bg1 text-lg font-bold lg:text-xl">
+                    Prestasi Kejuaraan
+                </h3>
+                <ul class="mb-10 font-poppins text-bg1">
+                    <li class="grid grid-cols-[3.25rem_minmax(0,1fr)_auto] items-center gap-3 border-b border-bg1/30 py-4 sm:gap-6">
+                        <span class="font-medium tabular-nums">2026</span>
+                        <span class="min-w-0 break-words">Piala By.U Kategori Kampus</span>
+                        <span class="rounded-full border border-bg1 bg-bg1 px-3 py-1 text-xs font-semibold text-bg sm:text-sm">Juara 2</span>
+                    </li>
+                    <li class="grid grid-cols-[3.25rem_minmax(0,1fr)_auto] items-center gap-3 border-b border-bg1/30 py-4 sm:gap-6">
+                        <span class="font-medium tabular-nums">2025</span>
+                        <span class="min-w-0 break-words">Liga 4 Piala Bupati Malang</span>
+                        <span class="rounded-full border border-bg1 bg-bg1 px-3 py-1 text-xs font-semibold text-bg sm:text-sm">Juara 2</span>
+                    </li>
+                    <li class="grid grid-cols-[3.25rem_minmax(0,1fr)_auto] items-center gap-3 border-b border-bg1/30 py-4 sm:gap-6">
+                        <span class="font-medium tabular-nums">2023</span>
+                        <span class="min-w-0 break-words">MIPA Futsal Competition</span>
+                        <span class="rounded-full border border-bg1 bg-bg1 px-3 py-1 text-xs font-semibold text-bg sm:text-sm">Juara 2</span>
+                    </li>
+                    <li class="grid grid-cols-[3.25rem_minmax(0,1fr)_auto] items-center gap-3 border-b border-bg1/30 py-4 sm:gap-6">
+                        <span class="font-medium tabular-nums">2023</span>
+                        <span class="min-w-0 break-words">Sportifor InterSchool Cup</span>
+                        <span class="rounded-full border border-bg1 bg-bg1 px-3 py-1 text-xs font-semibold text-bg sm:text-sm">Juara 2</span>
+                    </li>
+                    <li class="grid grid-cols-[3.25rem_minmax(0,1fr)_auto] items-center gap-3 border-b border-bg1/30 py-4 sm:gap-6">
+                        <span class="font-medium tabular-nums">2023</span>
+                        <span class="min-w-0 break-words">Goddes of Themis Futsal Competition Season 1</span>
+                        <span class="rounded-full border border-bg1 bg-bg1 px-3 py-1 text-xs font-semibold text-bg sm:text-sm">Juara 1</span>
+                    </li>
+                    <li class="grid grid-cols-[3.25rem_minmax(0,1fr)_auto] items-center gap-3 border-b border-bg1/30 py-4 sm:gap-6">
+                        <span class="font-medium tabular-nums">2022</span>
+                        <span class="min-w-0 break-words">Turnamen Futsal Bupati Malang Cup</span>
+                        <span class="rounded-full border border-bg1 bg-bg1 px-3 py-1 text-xs font-semibold text-bg sm:text-sm">Juara 1</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="partisipasi-liga-title">
+                <h3 id="partisipasi-liga-title"
+                    class="mb-4 border-b border-bg1/50 pb-3 text-center font-playfair text-bg1 text-lg font-bold lg:text-xl">
+                    Partisipasi Liga &amp; Kompetisi
+                </h3>
+                <ul class="font-poppins text-bg1">
+                    <li class="grid grid-cols-[3.25rem_minmax(0,1fr)_auto] items-center gap-3 border-b border-bg1/30 py-4 sm:gap-6">
+                        <span class="font-medium tabular-nums">2026</span>
+                        <span class="min-w-0 break-words">National Collegiate Futsal Series</span>
+                        <span class="rounded-full border border-bg1/60 px-3 py-1 text-xs font-medium text-bg1 sm:text-sm">Peserta</span>
+                    </li>
+                    <li class="grid grid-cols-[3.25rem_minmax(0,1fr)_auto] items-center gap-3 border-b border-bg1/30 py-4 sm:gap-6">
+                        <span class="font-medium tabular-nums">2025</span>
+                        <span class="min-w-0 break-words">Liga 4 PSSI Jawa Timur</span>
+                        <span class="rounded-full border border-bg1/60 px-3 py-1 text-xs font-medium text-bg1 sm:text-sm">Peserta</span>
+                    </li>
+                    <li class="grid grid-cols-[3.25rem_minmax(0,1fr)_auto] items-center gap-3 border-b border-bg1/30 py-4 sm:gap-6">
+                        <span class="font-medium tabular-nums">2023</span>
+                        <span class="min-w-0 break-words">Liga 3 PSSI Jawa Timur</span>
+                        <span class="rounded-full border border-bg1/60 px-3 py-1 text-xs font-medium text-bg1 sm:text-sm">Peserta</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
     </div>
 </section>
-<!-- Proyek End -->
+<!-- Pengalaman End -->
